@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:adaptor_games/common/combined_notifier.dart';
 import 'package:adaptor_games/main_page.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => CombinedNotifier(
-          ThemeMode.system, Locale(Platform.localeName.split("_").first)),
+      create: (_) => CombinedNotifier(),
       child: Consumer<CombinedNotifier>(
         builder: (context, notifier, _) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: ThemeData.light(),
-            darkTheme: ThemeData.dark(),
+            theme: notifier.colorTheme.begin,
+            darkTheme: notifier.colorTheme.end,
             themeMode: notifier.themeMode,
             locale: notifier.currentLocale,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
