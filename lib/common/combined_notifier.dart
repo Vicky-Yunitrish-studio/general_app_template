@@ -26,11 +26,8 @@ class CombinedNotifier with ChangeNotifier {
   ThemeDataTween get colorTheme => _colorTheme ?? defaultValue;
 
   void updateLocale(Locale newLocale) {
-    if (_locale != newLocale) {
-      _locale = newLocale;
-      debugPrint(currentLocale.toString());
-      notifyListeners();
-    }
+    _locale != newLocale ? _locale = newLocale : null;
+    notifyListeners();
   }
 
   void toggleThemeMode(ThemeMode newMode) {
