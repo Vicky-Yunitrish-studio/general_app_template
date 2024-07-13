@@ -12,19 +12,25 @@ class CombinedNotifier with ChangeNotifier {
   CombinedNotifier();
 
   Locale getSystemLanguage() {
-    return Locale(
-        "${Platform.localeName.split("_").first}_${Platform.localeName.split("_").last}");
+    return Locale(Platform.localeName.split("_").first,
+        Platform.localeName.split("_").last);
   }
 
   ThemeMode get themeMode => _themeMode ?? ThemeMode.system;
-  Locale get currentLocale => _locale ?? getSystemLanguage();
+  Locale get currentLocale =>
+      _locale ??
+      Locale(Platform.localeName.split("_").first,
+          Platform.localeName.split("_").last);
   ThemeData get darkTheme => _darkTheme ?? ThemeData.dark();
   ThemeData get lightTheme => _lightTheme ?? ThemeData.light();
   ThemeDataTween get colorTheme => _colorTheme ?? defaultValue;
 
   void updateLocale(Locale newLocale) {
-    _locale != newLocale ? _locale = newLocale : null;
-    notifyListeners();
+    if (_locale != newLocale) {
+      _locale = newLocale;
+      debugPrint(currentLocale.toString());
+      notifyListeners();
+    }
   }
 
   void toggleThemeMode(ThemeMode newMode) {
@@ -33,7 +39,6 @@ class CombinedNotifier with ChangeNotifier {
   }
 
   void updateDarkTheme(ThemeData newTheme) {
-    _darkTheme != newTheme ? _darkTheme = newTheme : null;
     updateColorTheme(ThemeDataTween(begin: lightTheme, end: newTheme));
     notifyListeners();
   }

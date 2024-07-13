@@ -22,15 +22,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.title_main),
-      ),
-      drawer: drawer(context, Provider.of<CombinedNotifier>(context)),
+    return defaultPage(
+      context,
+      AppLocalizations.of(context)!.title_main,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(Provider.of<CombinedNotifier>(context)
+                .currentLocale
+                .toString()),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,

@@ -27,8 +27,8 @@ Widget languageKit(BuildContext context, CombinedNotifier notifier) {
     DropdownButton(
       value: notifier.currentLocale,
       items: const [
-        DropdownMenuItem(value: Locale("en_US"), child: Text("English")),
-        DropdownMenuItem(value: Locale("zh_TW"), child: Text("繁體中文")),
+        DropdownMenuItem(value: Locale("en", "US"), child: Text("English")),
+        DropdownMenuItem(value: Locale("zh", "TW"), child: Text("繁體中文")),
       ],
       onChanged: (value) =>
           Provider.of<CombinedNotifier>(context, listen: false)
@@ -124,7 +124,8 @@ Widget themeModeKit(BuildContext context, CombinedNotifier notifier) {
   );
 }
 
-Drawer drawer(BuildContext context, CombinedNotifier notifier) {
+Drawer drawer(BuildContext context) {
+  CombinedNotifier notifier = Provider.of<CombinedNotifier>(context);
   return Drawer(
     child: Container(
       margin: const EdgeInsets.all(10),
@@ -140,5 +141,17 @@ Drawer drawer(BuildContext context, CombinedNotifier notifier) {
         child: Container(),
       ),
     ),
+  );
+}
+
+Scaffold defaultPage(BuildContext context, String title,
+    {Widget? body, Widget? floatingActionButton}) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(title),
+    ),
+    drawer: drawer(context),
+    body: body,
+    floatingActionButton: floatingActionButton,
   );
 }
