@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             locale: notifier.currentLocale,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            home: const MyHomePage(),
+            home: const MainPage(),
           );
         },
       ),

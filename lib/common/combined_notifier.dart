@@ -23,7 +23,7 @@ class CombinedNotifier with ChangeNotifier {
           Platform.localeName.split("_").last);
   ThemeData get darkTheme => _darkTheme ?? ThemeData.dark();
   ThemeData get lightTheme => _lightTheme ?? ThemeData.light();
-  ThemeDataTween get colorTheme => _colorTheme ?? defaultValue;
+  ThemeDataTween get colorTheme => _colorTheme ?? Themes().defaultValue;
 
   void updateLocale(Locale newLocale) {
     _locale != newLocale ? _locale = newLocale : null;
