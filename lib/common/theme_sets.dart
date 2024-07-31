@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-class ThemeDataPack {
-  final ThemeData light;
-  final ThemeData dark;
-  ThemeDataPack(this.light, this.dark);
-}
-
 class Themes {
   static TextStyle boldTextStyle = const TextStyle(fontWeight: FontWeight.bold);
   static TextTheme boldTextTheme = TextTheme(
@@ -26,45 +20,75 @@ class Themes {
     labelSmall: boldTextStyle,
   );
 
-  ThemeDataTween defaultValue =
+  static ThemeDataTween defaultValue =
       ThemeDataTween(begin: ThemeData.light(), end: ThemeData.dark());
 
-  ThemeDataTween grey = ThemeDataTween(
+  static ThemeDataTween grey = ThemeDataTween(
     begin: ThemeData(
-        colorSchemeSeed: Colors.grey[200],
-        textTheme: boldTextTheme,
-        appBarTheme: AppBarTheme(color: Colors.grey[200]),
-        brightness: Brightness.light),
+      textTheme: boldTextTheme,
+      colorScheme: ColorScheme.light(
+        surface: Colors.grey.shade300,
+        primary: Colors.grey.shade500,
+        secondary: Colors.grey.shade200,
+        tertiary: Colors.white,
+        inversePrimary: Colors.grey.shade900,
+      ),
+    ),
     end: ThemeData(
-        colorSchemeSeed: Colors.grey[700],
-        textTheme: boldTextTheme,
-        appBarTheme: AppBarTheme(color: Colors.grey[700]),
-        brightness: Brightness.dark),
+      textTheme: boldTextTheme,
+      colorScheme: ColorScheme.dark(
+        surface: Colors.grey.shade900,
+        primary: Colors.grey.shade700,
+        secondary: Colors.grey.shade500,
+        tertiary: Colors.black,
+        inversePrimary: Colors.grey.shade300,
+      ),
+    ),
   );
 
-  ThemeDataTween blue = ThemeDataTween(
+  static ThemeDataTween blue = ThemeDataTween(
     begin: ThemeData(
-        colorSchemeSeed: Colors.blue[200],
-        textTheme: boldTextTheme,
-        appBarTheme: AppBarTheme(color: Colors.blue[200]),
-        brightness: Brightness.light),
+      textTheme: boldTextTheme,
+      colorScheme: ColorScheme.light(
+        surface: Colors.blue.shade300,
+        primary: Colors.blue.shade500,
+        secondary: Colors.blue.shade200,
+        tertiary: Colors.white,
+        inversePrimary: Colors.blue.shade900,
+      ),
+    ),
     end: ThemeData(
-        colorSchemeSeed: Colors.blue[700],
-        textTheme: boldTextTheme,
-        appBarTheme: AppBarTheme(color: Colors.blue[700]),
-        brightness: Brightness.dark),
+      textTheme: boldTextTheme,
+      colorScheme: ColorScheme.dark(
+        surface: Colors.blue.shade900,
+        primary: Colors.blue.shade700,
+        secondary: Colors.blue.shade500,
+        tertiary: Colors.black,
+        inversePrimary: Colors.blue.shade300,
+      ),
+    ),
   );
 
-  ThemeDataTween brown = ThemeDataTween(
+  static ThemeDataTween brown = ThemeDataTween(
     begin: ThemeData(
-        colorSchemeSeed: Colors.brown[200],
-        textTheme: boldTextTheme,
-        appBarTheme: AppBarTheme(color: Colors.brown[200]),
-        brightness: Brightness.light),
+      textTheme: boldTextTheme,
+      colorScheme: ColorScheme.light(
+        surface: Colors.brown.shade300,
+        primary: Colors.brown.shade500,
+        secondary: Colors.brown.shade200,
+        tertiary: Colors.white,
+        inversePrimary: Colors.brown.shade900,
+      ),
+    ),
     end: ThemeData(
-        colorSchemeSeed: Colors.brown[700],
-        textTheme: boldTextTheme,
-        appBarTheme: AppBarTheme(color: Colors.brown[700]),
-        brightness: Brightness.dark),
+      textTheme: boldTextTheme,
+      colorScheme: ColorScheme.dark(
+        surface: Colors.brown.shade900,
+        primary: Colors.brown.shade700,
+        secondary: Colors.brown.shade500,
+        tertiary: Colors.black,
+        inversePrimary: Colors.brown.shade300,
+      ),
+    ),
   );
 }

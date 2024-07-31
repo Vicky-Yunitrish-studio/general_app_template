@@ -48,12 +48,10 @@ class Components {
           DropdownMenuItem(
               value: ThemeData.dark(),
               child: Text(AppLocalizations.of(context)!.default_value)),
+          DropdownMenuItem(value: Themes.grey.end, child: const Text("#Grey")),
+          DropdownMenuItem(value: Themes.blue.end, child: const Text("#Blue")),
           DropdownMenuItem(
-              value: Themes().grey.end, child: const Text("#Grey")),
-          DropdownMenuItem(
-              value: Themes().blue.end, child: const Text("#Blue")),
-          DropdownMenuItem(
-              value: Themes().brown.end, child: const Text("#Brown")),
+              value: Themes.brown.end, child: const Text("#Brown")),
         ],
         onChanged: (value) =>
             Provider.of<CombinedNotifier>(context, listen: false)
@@ -73,11 +71,11 @@ class Components {
               value: ThemeData.light(),
               child: Text(AppLocalizations.of(context)!.default_value)),
           DropdownMenuItem(
-              value: Themes().grey.begin, child: const Text("#Grey")),
+              value: Themes.grey.begin, child: const Text("#Grey")),
           DropdownMenuItem(
-              value: Themes().blue.begin, child: const Text("#Blue")),
+              value: Themes.blue.begin, child: const Text("#Blue")),
           DropdownMenuItem(
-              value: Themes().brown.begin, child: const Text("#Brown")),
+              value: Themes.brown.begin, child: const Text("#Brown")),
         ],
         onChanged: (value) =>
             Provider.of<CombinedNotifier>(context, listen: false)
@@ -94,12 +92,11 @@ class Components {
           value: notifier.colorTheme,
           items: [
             DropdownMenuItem(
-                value: Themes().defaultValue,
+                value: Themes.defaultValue,
                 child: Text(AppLocalizations.of(context)!.default_value)),
-            DropdownMenuItem(value: Themes().grey, child: const Text("#Grey")),
-            DropdownMenuItem(value: Themes().blue, child: const Text("#Blue")),
-            DropdownMenuItem(
-                value: Themes().brown, child: const Text("#Brown")),
+            DropdownMenuItem(value: Themes.grey, child: const Text("#Grey")),
+            DropdownMenuItem(value: Themes.blue, child: const Text("#Blue")),
+            DropdownMenuItem(value: Themes.brown, child: const Text("#Brown")),
           ],
           onChanged: (value) {
             Provider.of<CombinedNotifier>(context, listen: false)
