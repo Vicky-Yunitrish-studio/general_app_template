@@ -1,6 +1,6 @@
-import 'dart:io';
-import 'package:adaptor_games/common/theme_sets.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptor_games/common/theme_sets.dart';
 
 class CombinedNotifier with ChangeNotifier {
   ThemeMode? _themeMode;
@@ -11,16 +11,16 @@ class CombinedNotifier with ChangeNotifier {
 
   CombinedNotifier();
 
-  Locale getSystemLanguage() {
-    return Locale(Platform.localeName.split("_").first,
-        Platform.localeName.split("_").last);
+  Locale getLocale() {
+    if (kIsWeb) {
+      return const Locale('en', 'US');
+    } else {
+      return const Locale('en', 'US'); // Default to en_US for other platforms
+    }
   }
 
   ThemeMode get themeMode => _themeMode ?? ThemeMode.system;
-  Locale get currentLocale =>
-      _locale ??
-      Locale(Platform.localeName.split("_").first,
-          Platform.localeName.split("_").last);
+  Locale get currentLocale => _locale ?? getLocale();
   ThemeData get darkTheme => _darkTheme ?? ThemeData.dark();
   ThemeData get lightTheme => _lightTheme ?? ThemeData.light();
   ThemeDataTween get colorTheme => _colorTheme ?? Themes.defaultValue;
