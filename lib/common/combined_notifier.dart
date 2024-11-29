@@ -1,3 +1,4 @@
+import 'dart:js' as js;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptor_games/common/theme_sets.dart';
@@ -13,8 +14,21 @@ class CombinedNotifier with ChangeNotifier {
 
   Locale getLocale() {
     if (kIsWeb) {
-      return const Locale('en', 'US');
+      try {
+        String browserLang =
+            js.context.callMethod('navigator', ['language']).toString();
+        List<String> langParts = browserLang.split('-');
+        if (langParts.length >= 2) {
+          return Locale(langParts[0], langParts[1]);
+        } else {
+          return Locale(browserLang);
+        }
+      } catch (e) {
+        // Handle errors gracefully, fallback to default locale
+        return const Locale('en', 'US');
+      }
     } else {
+      // Use existing app locale mechanism for non-web platforms
       return const Locale('en', 'US'); // Default to en_US for other platforms
     }
   }
