@@ -1,16 +1,13 @@
-# adaptor_games
+# General App Template
 
-A new Flutter project.
+## Must do things
 
-## Getting Started
+1. rename the bundle ID
+    1. `flutter pub global activate rename`
+    2. `flutter pub global run rename setBundleId -v "adaptor.app.xxxxx"`
 
-This project is a starting point for a Flutter application.
+## Web Deploy
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Download [firebase-tools-instant-win.exe](https://firebase.tools/bin/win/instant/latest)
+2. firebase login
+3. 待完成
